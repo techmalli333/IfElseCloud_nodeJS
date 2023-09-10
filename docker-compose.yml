@@ -1,0 +1,16 @@
+version: "3"
+services:
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq
+    ports:
+      - "5672:5672" # RabbitMQ default port
+      - "15672:15672" # RabbitMQ management plugin port
+
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq # To persist data
+    networks:
+      - rabbitmq_network
+
+networks:
+  rabbitmq_network:
